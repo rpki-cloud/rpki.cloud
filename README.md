@@ -11,11 +11,29 @@ RPKI Cloud is a free public RPKI Validator Service
 
 RPKI Cloud is a free RPKI Route Origin Validation (ROV) service. The service is designed to be highly available with performance and security in mind.
 
-ROV made easy
+### RPKI made easy
+Enabling RPKI for your ASN can be categorized into two major steps. (1) Use of ROV to validate BGP routes received from external peers. (2) Setting up ROAs (Route Origin Authorization) for associating your ASNs to the IP prefixes owned by your organization which requires setting up digital certificates. This project focuses on step 1. Typically, organizations would be required to setup a server to perform route validation by setting up a feed from various Internet Routing Registries and configuring your edge router to obtain the ROV feed from this server.
 
+The RPKI Cloud project does the work of performing route validation and sets up an open feed on port 3323 which your edge routers can subscribe to. 
 
-Free
+### Free
+Let's face it. Setting up and maintaining ROV servers is hard which is a reason for limited adoption of ROV. RPKI has been designed to make the internet a more secure place by enabling verification of peer routes (Trust but verify!). RPKI Cloud service aims to make ROV adoption simpler by providing highly available feed and the configuration required on your routers
 
+### Configuration
+As a network operator, all you need to do is setup your external eBGP router to accept RPKI Cloud feed. The .config files in this repo provide examples of the ROV configuration for various types of commonly used edge routers. Find yours and configure accordingly.
+
+Example for Mikrotik:
+```
+/routing/bgp/rpki
+add group=myRpkiGroup address=184.73.232.63 port=3323 refresh-interval=20
+add group=myRpkiGroup address=52.52.161.24 port=3323 refresh-interval=20
+
+/routing/filter/rule
+add chain=bgp_in rule="rpki-verify myRpkiGroup"
+add chain=bgp_in rule="if (rpki invalid) { reject } else { accept }"
+```
+
+ROV enables you to accept 'valid' routes and reject 'invalid' routes. For your initial testing, you may decide to not 'reject' any routes and simply log the 'invalid' routes. A route is considered as 'invalid' if the origin ASN for a that particular IP prefix does not match per the available ROAs.
 
 ### Support
 
@@ -25,12 +43,11 @@ Community support is available on
 list](https://lists.defensor.cloud/mailman/listinfo/rpki). RPKI Cloud is
 liberally licensed under the [Apache License](https://github.com/rpki-cloud/rpki.cloud/blob/main/LICENSE)
 
-Please refer to the comprehensive
-[documentation](https://rpki.docs.defensor.cloud/) to learn what works
-best for you.
-
 #### Contribute
 Like the project? Please share this in your network (pun intended) and encourage more ASNs to perform ROV at their edge.
 
 #### Sponsor a coffee
+Contribute to make the internet a more secure place by sponsoring us a coffee below
+
+https://www.buymeacoffee.com/rpkicloud
 
