@@ -33,7 +33,7 @@ add chain=bgp_in rule="rpki-verify myRpkiGroup"
 add chain=bgp_in rule="if (rpki invalid) { reject } else { accept }"
 ```
 
-ROV enables you to accept 'valid' routes and reject 'invalid' routes. For your initial testing, you may decide to not 'reject' any routes and simply log the 'invalid' routes. A route is considered as 'invalid' if the origin ASN for a that particular IP prefix does not match per the available ROAs.  You can read more about RPKI here: (https://rpki.readthedocs.io/)
+ROV enables you to accept 'valid' routes and reject 'invalid' routes. For your initial testing, you may decide to not 'reject' any routes and simply log the 'invalid' routes. A route is considered as 'invalid' if the origin ASN for a that particular IP prefix does not match per the available ROAs.  You can read more about RPKI here: https://rpki.readthedocs.io/
 
 ### Support
 
