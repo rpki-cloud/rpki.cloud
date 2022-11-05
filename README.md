@@ -1,13 +1,11 @@
 # rpki.cloud
 RPKI Cloud is a free public RPKI Validator Service
 
-<img align="right" src="https://www.defensor.cloud/static/logos/<name>.svg" height="150">
+<img align="right" src="https://defensor.cloud/wp-content/uploads/2022/10/defensor-horizontal-blue-transparent.svg" height="150">
 
 [![CI](https://github.com/rpki-cloud/rpki.cloud/workflows/ci/badge.svg)](https://github.com/rpki-cloud/rpki.cloud/actions?query=workflow%3Aci)
-
-[![Documentation Status](https://readthedocs.org/projects/rpki.cloud/badge/?version=stable)](https://rpki.docs.defensor.cloud/en/stable/)
-[![Discord](https://img.shields.io/discord/818584154278199396?label=Discord&logo=discord)](https://discord.gg/<id>)
-[![Twitter](https://img.shields.io/twitter/follow/<>.svg?label=Follow&style=social)](https://twitter.com/<rpki-cloud>)
+[![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://join.slack.com/t/defensorhq/shared_invite/zt-1ixt72cyv-voTkoGCbwaFpSNWfJwlPqQ)
+[![Twitter](https://img.shields.io/twitter/follow/<>.svg?label=Follow&style=social)](https://twitter.com/DefensorRPKI)
 
 RPKI Cloud is a free RPKI Route Origin Validation (ROV) service. The service is designed to be highly available with performance and security in mind.
 
@@ -21,6 +19,8 @@ Let's face it. Setting up and maintaining ROV servers is hard which is a reason 
 
 ### Configuration
 As a network operator, all you need to do is setup your external eBGP router to accept RPKI Cloud feed. The .config files in this repo provide examples of the ROV configuration for various types of commonly used edge routers. Find yours and configure accordingly.
+
+The free RPKI validation feed is available at `r1.rpki.cloud`(184.73.232.63) and `r2.rpki.cloud` (52.52.161.24) on port 3323
 
 Example for Mikrotik:
 ```
@@ -38,9 +38,8 @@ ROV enables you to accept 'valid' routes and reject 'invalid' routes. For your i
 ### Support
 
 Community support is available on
-[Discord](https://discord.gg/<id>),
-[Twitter](https://twitter.com/<id>/) and our [mailing
-list](https://lists.defensor.cloud/mailman/listinfo/rpki). RPKI Cloud is
+[Slack](https://join.slack.com/t/defensorhq/shared_invite/zt-1ixt72cyv-voTkoGCbwaFpSNWfJwlPqQ),
+[Twitter](https://twitter.com/DefensorRPKI). RPKI Cloud is
 liberally licensed under the [Apache License](https://github.com/rpki-cloud/rpki.cloud/blob/main/LICENSE)
 
 #### Contribute
