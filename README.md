@@ -9,16 +9,16 @@ RPKI Cloud is a free public RPKI Validator Service
 
 RPKI Cloud is a free RPKI Route Origin Validation (ROV) service. The service is designed to be highly available with performance and security in mind.
 
-### RPKI made easy
-Enabling RPKI for your ASN can be categorized into two major steps. (1) Use of ROV to validate BGP routes received from external peers. (2) Setting up ROAs (Route Origin Authorization) for associating your ASNs to the IP prefixes owned by your organization which requires setting up digital certificates. This project focuses on step 1. Typically, organizations would be required to setup a server to perform route validation by setting up a feed from various Internet Routing Registries and configuring your edge router to obtain the ROV feed from this server.
+### RPKI ROV made easy
+Enabling RPKI ROV for your ASN can be categorized into two steps. (1) Reading: Use of ROV on peering routers to validate BGP routes received from external peers. (2) Writing: Setting up ROAs (Route Origin Authorization) for associating your ASNs to the IP prefixes owned by your organization which requires setting up digital certificates. This project focuses on step 1. Typically, organizations would be required to setup multiple validation (relying party) servers to retreive ROAs from various repoistories on the Internet and perform the cryptographic validation which then deliver the VRP (validated ROA payload) to the edge routers via RTR.
 
-The RPKI Cloud project does the work of performing route validation and sets up an open feed on port 3323 which your edge routers can subscribe to. 
+The RPKI Cloud project does the work of retrieving the ROAs and performing the cryptographic validation and sets up an open RTR feed on port 3323 which your edge routers can subscribe to. 
 
 ### Free
-Let's face it. Setting up and maintaining ROV servers is hard which is a reason for limited adoption of ROV. RPKI has been designed to make the internet a more secure place by enabling verification of peer routes (Trust but verify!). RPKI Cloud service aims to make ROV adoption simpler by providing highly available feed and the configuration required on your routers
+Let's face it. Setting up and maintaining highly available ROV servers is hard which is a reason for the limited adoption of ROV. RPKI has been designed to make the Internet a more secure place by verifying that an IP prefix is being announced by the correct ASN (trust but verify!). The RPKI Cloud service aims to make ROV adoption simpler by providing a highly available feed and the configuration required on your routers
 
 ### Configuration
-As a network operator, all you need to do is setup your external eBGP router to accept RPKI Cloud feed. The .config files in this repo provide examples of the ROV configuration for various types of commonly used edge routers. Find yours and configure accordingly.
+As a network operator, all you need to do is setup your external eBGP routers to grab the RPKI Cloud feed. The .config files in this repo provide examples of the ROV configuration for various types of commonly used edge routers. Find yours and configure accordingly.
 
 The free RPKI validation feed is available at `r1.rpki.cloud`(184.73.232.63) and `r2.rpki.cloud` (52.52.161.24) on port 3323
 
@@ -33,7 +33,7 @@ add chain=bgp_in rule="rpki-verify myRpkiGroup"
 add chain=bgp_in rule="if (rpki invalid) { reject } else { accept }"
 ```
 
-ROV enables you to accept 'valid' routes and reject 'invalid' routes. For your initial testing, you may decide to not 'reject' any routes and simply log the 'invalid' routes. A route is considered as 'invalid' if the origin ASN for a that particular IP prefix does not match per the available ROAs.
+ROV enables you to accept 'valid' routes and reject 'invalid' routes. For your initial testing, you may decide to not 'reject' any routes and simply log the 'invalid' routes. A route is considered as 'invalid' if the origin ASN for a that particular IP prefix does not match per the available ROAs.  You can read more about RPKI here: https://rpki.readthedocs.io/
 
 ### Support
 
