@@ -3,9 +3,8 @@ RPKI Cloud is a free public RPKI Validator Service
 
 <img align="right" src="https://defensor.cloud/wp-content/uploads/2022/10/defensor-horizontal-blue-transparent.svg" height="150">
 
-[![CI](https://github.com/rpki-cloud/rpki.cloud/workflows/ci/badge.svg)](https://github.com/rpki-cloud/rpki.cloud/actions?query=workflow%3Aci)
 [![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://join.slack.com/t/defensorhq/shared_invite/zt-1ixt72cyv-voTkoGCbwaFpSNWfJwlPqQ)
-[![Twitter](https://img.shields.io/twitter/follow/<>.svg?label=Follow&style=social)](https://twitter.com/DefensorRPKI)
+[![Twitter](https://img.shields.io/twitter/follow/DefensorRPKI.svg?label=Follow&style=social)](https://twitter.com/DefensorRPKI)
 
 RPKI Cloud is a free RPKI Route Origin Validation (ROV) service. The service is designed to be highly available with performance and security in mind.
 
