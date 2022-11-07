@@ -9,7 +9,7 @@ RPKI Cloud is a free public RPKI Validator Service
 RPKI Cloud is a free validator service for RPKI Route Origin Validation (ROV). The service is designed to be highly available with performance and security in mind.
 
 ### RPKI ROV made easy
-Enabling RPKI ROV for your ASN can be categorized into two steps. (1) Reading: Use of ROV on peering routers to validate BGP routes received from external peers. (2) Writing: Setting up ROAs (Route Origin Authorizations) for associating your ASNs to the IP prefixes owned by your organization which requires setting up digital certificates. This project focuses on step 1. Typically, organizations would be required to setup multiple validation (relying party) servers to retreive ROAs from various repoistories on the Internet and perform the cryptographic validation which then deliver the VRP (validated ROA payload) to the edge routers via RTR.
+Enabling RPKI ROV for your ASN can be categorized into two steps. (1) Reading: Use of ROV on peering routers to validate BGP routes received from external peers. (2) Writing: Generating and publishing ROA (Route Origin Authorization) digital certificates for associating your ASNs to the IP prefixes owned by your organization. This project focuses on step 1. Typically, organizations would be required to setup multiple validation (relying party) servers to retreive ROAs from various repoistories on the Internet and perform the cryptographic validation which then deliver the VRP (validated ROA payload) to the edge routers via RTR.
 
 Similar to a public DNS resolution service like Google's 8.8.8.8 or Cloudflare's 1.1.1.1, the RPKI Cloud project is a free, cloud based service.  It does the work of retrieving ROAs for repositories around the world and performing cryptographic validation.  The service provides an open, highly available RTR feed on port 3323 which your edge routers can subscribe to. 
 
@@ -19,7 +19,7 @@ Let's face it. Setting up and maintaining highly available ROV servers is hard w
 ### Configuration
 As a network operator, all you need to do is setup your external eBGP routers to grab the RPKI Cloud feed. The .config files in this repo provide examples of the ROV configuration for various types of commonly used edge routers. Find yours and configure accordingly.
 
-The free RPKI validation feed is available at `r1.rpki.cloud`(184.73.232.63) and `r2.rpki.cloud` (52.52.161.24) on port 3323
+The free RPKI validation feed is available at `r1.rpki.cloud`(IPv4 184.73.232.63, IPv6 2600:1f18:e99:5401:e875:17cd:7a52:5d6c) and `r2.rpki.cloud` (IPv4 52.52.161.24, IPv6 2600:1f1c:244:6000:e347:c4c8:56a2:d665) on port 3323
 
 Example for Mikrotik:
 ```
