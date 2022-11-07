@@ -6,15 +6,15 @@ RPKI Cloud is a free public RPKI Validator Service
 [![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://join.slack.com/t/defensorhq/shared_invite/zt-1ixt72cyv-voTkoGCbwaFpSNWfJwlPqQ)
 [![Twitter](https://img.shields.io/twitter/follow/DefensorRPKI.svg?label=Follow&style=social)](https://twitter.com/DefensorRPKI)
 
-RPKI Cloud is a free RPKI Route Origin Validation (ROV) service. The service is designed to be highly available with performance and security in mind.
+RPKI Cloud is a free validator service for RPKI Route Origin Validation (ROV). The service is designed to be highly available with performance and security in mind.
 
 ### RPKI ROV made easy
-Enabling RPKI ROV for your ASN can be categorized into two steps. (1) Reading: Use of ROV on peering routers to validate BGP routes received from external peers. (2) Writing: Setting up ROAs (Route Origin Authorization) for associating your ASNs to the IP prefixes owned by your organization which requires setting up digital certificates. This project focuses on step 1. Typically, organizations would be required to setup multiple validation (relying party) servers to retreive ROAs from various repoistories on the Internet and perform the cryptographic validation which then deliver the VRP (validated ROA payload) to the edge routers via RTR.
+Enabling RPKI ROV for your ASN can be categorized into two steps. (1) Reading: Use of ROV on peering routers to validate BGP routes received from external peers. (2) Writing: Setting up ROAs (Route Origin Authorizations) for associating your ASNs to the IP prefixes owned by your organization which requires setting up digital certificates. This project focuses on step 1. Typically, organizations would be required to setup multiple validation (relying party) servers to retreive ROAs from various repoistories on the Internet and perform the cryptographic validation which then deliver the VRP (validated ROA payload) to the edge routers via RTR.
 
-The RPKI Cloud project does the work of retrieving the ROAs and performing the cryptographic validation and sets up an open RTR feed on port 3323 which your edge routers can subscribe to. 
+Similar to a public DNS resolution service like Google's 8.8.8.8 or Cloudflare's 1.1.1.1, the RPKI Cloud project does the work of retrieving the ROAs and performing the cryptographic validation and sets up an open RTR feed on port 3323 which your edge routers can subscribe to. 
 
 ### Free
-Let's face it. Setting up and maintaining highly available ROV servers is hard which is a reason for the limited adoption of ROV. RPKI has been designed to make the Internet a more secure place by verifying that an IP prefix is being announced by the correct ASN (trust but verify!). The RPKI Cloud service aims to make ROV adoption simpler by providing a highly available feed and the configuration required on your routers
+Let's face it. Setting up and maintaining highly available ROV servers is hard which contributes to the limited adoption of ROV. RPKI ROV has been designed to make the Internet a more secure place by verifying that an IP prefix is being announced by the correct ASN (trust but verify!). The RPKI Cloud service aims to make ROV adoption simpler by providing a highly available and scalable feed and example ROV configuration required on your routers.
 
 ### Configuration
 As a network operator, all you need to do is setup your external eBGP routers to grab the RPKI Cloud feed. The .config files in this repo provide examples of the ROV configuration for various types of commonly used edge routers. Find yours and configure accordingly.
@@ -32,7 +32,7 @@ add chain=bgp_in rule="rpki-verify myRpkiGroup"
 add chain=bgp_in rule="if (rpki invalid) { reject } else { accept }"
 ```
 
-ROV enables you to accept 'valid' routes and reject 'invalid' routes. For your initial testing, you may decide to not 'reject' any routes and simply log the 'invalid' routes. A route is considered as 'invalid' if the origin ASN for a that particular IP prefix does not match per the available ROAs.  You can read more about RPKI here: https://rpki.readthedocs.io/
+ROV enables you to accept 'valid' and 'unknown' advertisements and reject 'invalid' advertisements. For your initial testing, you may decide to not 'reject' any routes and simply log and/or tag the 'invalid' routes with a community. A route is considered as 'invalid' if the origin ASN for a that particular IP prefix does not match per the available ROAs.  You can read more about RPKI here: https://rpki.readthedocs.io/
 
 ### Support
 
