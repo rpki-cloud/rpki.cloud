@@ -14,7 +14,7 @@ Enabling RPKI ROV for your ASN can be categorized into two steps. (1) Reading: U
 Similar to a public DNS resolution service like Google's 8.8.8.8 or Cloudflare's 1.1.1.1, the RPKI Cloud project is a free, cloud based service.  It does the work of retrieving ROAs from repositories around the world and performing cryptographic validation.  The service provides an open, highly available RTR feed on port 3323 which your edge routers can subscribe to. 
 
 ### Free
-Let's face it. Setting up and maintaining highly available ROV servers is hard which contributes to the limited adoption of ROV. RPKI ROV has been designed to make the Internet a more secure place by verifying that an IP prefix is being announced by the correct ASN (trust but verify!). The RPKI Cloud service aims to make ROV adoption simpler by providing a highly available and scalable feed and example ROV configuration required on your routers.
+RPKI ROV has been designed to make the Internet a more secure place by verifying that an IP prefix is being announced by the correct ASN (trust but verify!). The RPKI Cloud service aims to make ROV adoption simpler by providing a highly available and scalable feed and example ROV configuration required on your routers.
 
 ### Configuration
 As a network operator, all you need to do is setup your external eBGP routers to grab the RPKI Cloud feed. The .config files in this repo provide examples of the ROV configuration for various types of commonly used edge routers. Find yours and configure accordingly.
