@@ -15,6 +15,7 @@ Similar to a public DNS resolution service like Google's 8.8.8.8 or Cloudflare's
 
 ### Free
 RPKI ROV has been designed to make the Internet a more secure place by verifying that an IP prefix is being announced by the correct ASN (trust but verify!). The RPKI Cloud service aims to make ROV adoption simpler by providing a highly available and scalable feed and example ROV configuration required on your routers.
+The RPKI Cloud service uses the excellent open source validators Routinator (https://routinator.docs.nlnetlabs.nl/) and RPKI-Client (https://www.rpki-client.org).  If you are technical and want to run, monitor, maintain, and keep up-to-date your own validators, please check them out!
 
 ### Configuration
 As a network operator, all you need to do is setup your external eBGP routers to grab the RPKI Cloud feed. The .config files in this repo provide examples of the ROV configuration for various types of commonly used edge routers. Find yours and configure accordingly.
